@@ -30,5 +30,5 @@ boolean indicates the result for the following expression
 
 `console.log(typeNode && (typeNode.kind === ts.SyntaxKind.ArrayType || typeNode.kind === ts.SyntaxKind.TupleType));`
 
-typeNode is the type node of arrTest in this case (see main.ts)
+typeNode is the type node of arrTest in this case (see main.ts and test.ts)
 
