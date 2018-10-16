@@ -8,7 +8,9 @@ export function walk(sourceFile: ts.SourceFile, checker: ts.TypeChecker) {
         if (ts.isPropertyAccessExpression(node.expression)) {
             const ownerType = checker.getTypeAtLocation(node.expression.expression);
             const typeNode = checker.typeToTypeNode(ownerType);
-            console.log(typeNode && (typeNode.kind === ts.SyntaxKind.ArrayType || typeNode.kind === ts.SyntaxKind.TupleType));
+            console.log("TypeNode:");
+            console.log(typeNode);
+            console.log("Is Array or TupleType:", typeNode && (typeNode.kind === ts.SyntaxKind.ArrayType || typeNode.kind === ts.SyntaxKind.TupleType));
         }
     }
 
@@ -24,9 +26,12 @@ function walkProgram(program: ts.Program, checker: ts.TypeChecker) {
 
 const fileNames = process.argv.slice(2);
 
+console.log("ES6:");
 let programES6 = ts.createProgram(fileNames, {target: ts.ScriptTarget.ES2015, lib: ["es6"]});
 walkProgram(programES6, programES6.getTypeChecker());
-
+console.log("");
+console.log("Default:");
+console.log("");
 let programDefault = ts.createProgram(fileNames, {});
 walkProgram(programDefault, programDefault.getTypeChecker());
 
