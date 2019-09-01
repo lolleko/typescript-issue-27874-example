@@ -9,6 +9,7 @@ export function walk(sourceFile: ts.SourceFile, checker: ts.TypeChecker) {
             const ownerType = checker.getTypeAtLocation(node.expression.expression);
             const typeNode = checker.typeToTypeNode(ownerType);
             console.log("TypeNode:");
+            console.log(checker.typeToString(ownerType));
             console.log(typeNode);
             console.log("Is Array or TupleType:", typeNode && (typeNode.kind === ts.SyntaxKind.ArrayType || typeNode.kind === ts.SyntaxKind.TupleType));
         }
